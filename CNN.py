@@ -5,7 +5,6 @@ import os
 import shutil
 import itertools
 import imutils
-import matplotlib.pyplot as plt
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
@@ -230,3 +229,7 @@ print('Test Accuracy = %.2f' % accuracy)
 
 confusion_mtx = confusion_matrix(y_test, predictions)
 cm = plot_confusion_matrix(confusion_mtx, classes = list(labels.items()), normalize=False)
+
+#save model and weights
+model.save("weights.h5")
+print("Model Saved")
