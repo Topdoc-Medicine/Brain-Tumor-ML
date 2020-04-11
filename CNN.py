@@ -55,7 +55,59 @@ X_test_crop = crop_imgs(set_name=X_test)
 plot_samples(X_train_crop, y_train, labels, 30)
 
 # saving new images to the folder
-!mkdir TRAIN_CROP TEST_CROP VAL_CROP TRAIN_CROP/YES TRAIN_CROP/NO TEST_CROP/YES TEST_CROP/NO VAL_CROP/YES VAL_CROP/NO
+path = './brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/TRAIN_CROP/YES'
+
+try:
+    os.makedirs(path)
+except OSError:
+    print ("creation of the directory %s failed" % path)
+else:
+    print("successfully created the directory %s" % path)
+
+path = './brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/TRAIN_CROP/NO'
+
+try:
+    os.makedirs(path)
+except OSError:
+    print ("creation of the directory %s failed" % path)
+else:
+    print("successfully created the directory %s" % path)
+
+path = './brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/TEST_CROP/YES'
+
+try:
+    os.makedirs(path)
+except OSError:
+    print ("creation of the directory %s failed" % path)
+else:
+    print("successfully created the directory %s" % path)
+
+path = './brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/TEST_CROP/NO'
+
+try:
+    os.makedirs(path)
+except OSError:
+    print ("creation of the directory %s failed" % path)
+else:
+    print("successfully created the directory %s" % path)
+
+path = './brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/VAL_CROP/YES'
+
+try:
+    os.makedirs(path)
+except OSError:
+    print ("creation of the directory %s failed" % path)
+else:
+    print("successfully created the directory %s" % path)
+
+path = './brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/VAL_CROP/NO'
+
+try:
+    os.makedirs(path)
+except OSError:
+    print ("creation of the directory %s failed" % path)
+else:
+    print("successfully created the directory %s" % path)
 
 save_new_images(X_train_crop, y_train, folder_name='TRAIN_CROP/')
 save_new_images(X_val_crop, y_val, folder_name='VAL_CROP/')
