@@ -16,7 +16,7 @@ from keras.models import Model, Sequential
 from keras.optimizers import Adam, RMSprop
 from keras.callbacks import EarlyStopping
 
-IMG_PATH = './brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/'
+IMG_PATH = '../input/brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/'
 # split the data by train/val/test
 for CLASS in os.listdir(IMG_PATH):
     if not CLASS.startswith('.'):
@@ -25,7 +25,7 @@ for CLASS in os.listdir(IMG_PATH):
             img = IMG_PATH + CLASS + '/' + FILE_NAME
             if n < 5:
                 shutil.copy(img, 'TEST/' + CLASS.upper() + '/' + FILE_NAME)
-            elif n < 0.8*IMG_NUM:
+            elif n < 0.8 * IMG_NUM:
                 shutil.copy(img, 'TRAIN/'+ CLASS.upper() + '/' + FILE_NAME)
             else:
                 shutil.copy(img, 'VAL/'+ CLASS.upper() + '/' + FILE_NAME)
