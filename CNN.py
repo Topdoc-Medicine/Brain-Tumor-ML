@@ -164,6 +164,8 @@ validation_generator = test_datagen.flow_from_directory(
     seed=RANDOM_SEED
 )
 
+# transfer learning
+
 # load base model
 vgg16_weight_path = '../input/keras-pretrained-models/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5'
 base_model = VGG16(
