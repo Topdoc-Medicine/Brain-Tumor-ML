@@ -192,7 +192,7 @@ model.compile(
 
 model.summary()
 
-EPOCHS = 30
+EPOCHS = 25
 es = EarlyStopping(
     monitor='val_acc',
     mode='max',
