@@ -11,7 +11,7 @@ import h5py
 import glob
 from keras.initializers import glorot_uniform
 
-h5file =  "weights.h5"
+h5file =  "VGGModel.h5"
 
 with h5py.File(h5file,'r') as fid:
      model = load_model(fid)
@@ -40,7 +40,7 @@ def autoroi(img):
 
 
 def prediction():
-    list_of_files = glob.glob('./brain-Tumor-ML/brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/yes/*')
+    list_of_files = glob.glob('./brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/no/*')
     latest_file = max(list_of_files, key=os.path.getctime)
     img = cv2.imread(latest_file)
     # img = cv2.imread("./MontgomerySet/CXR_png/MCUCXR_0001_0.png")
@@ -60,7 +60,7 @@ def prediction():
 finalPrediction = prediction()
 print(finalPrediction[0])
 print("Final Prediction = ", finalPrediction)
-if (finalPrediction == 0):
+if (finalPrediction < 0.5):
     print("Congratulations! You are healthy!")
-else if (finalPrediction == 1):
+else:
     print("Unfortunately, you have been diagnosed with a Brain Tumor. Consider using our Tumor Detection Algorithm to better understand your diagnosis.")
