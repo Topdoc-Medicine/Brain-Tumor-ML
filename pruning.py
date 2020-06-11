@@ -14,7 +14,7 @@ from sklearn.preprocessing import LabelEncoder
 from tensorflow_model_optimization.sparsity import keras as sparsity
 
 # Load the serialized model
-loaded_model = tf.keras.models.load_model('vgg.h5')
+loaded_model = tf.keras.models.load_model('VGGModel.h5')
 
 new_pruning_params = {
       'pruning_schedule': sparsity.PolynomialDecay(initial_sparsity=0.50,
@@ -52,4 +52,4 @@ callbacks = [
 
 final_model = sparsity.strip_pruning(new_pruned_model)
 final_model.summary()
-final_model.save('finalPrunedWeights.h5')
+final_model.save('vggPruned.h5')
