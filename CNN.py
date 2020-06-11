@@ -1,10 +1,15 @@
+from keras.applications.vgg19 import VGG19,preprocess_input
+from keras.applications.xception import Xception,preprocess_input
+from keras.applications.inception_v3 import InceptionV3,inception_v3
+from keras.applications.resnet50 import ResNet50,resnet50
+
 import numpy as np
 from tqdm import tqdm
 import cv2
 import os
 import shutil
 import itertools
-import imutils
+# import imutils
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score, confusion_matrix
@@ -16,7 +21,7 @@ from keras.models import Model, Sequential
 from keras.optimizers import Adam, RMSprop
 from keras.callbacks import EarlyStopping
 
-IMG_PATH = '../input/brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/'
+IMG_PATH = './brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/'
 # split the data by train/val/test
 for CLASS in os.listdir(IMG_PATH):
     if not CLASS.startswith('.'):
