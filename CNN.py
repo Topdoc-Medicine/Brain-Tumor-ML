@@ -54,7 +54,7 @@ def load_data(dir_path, img_size=(100,100)):
             i += 1
     X = np.array(X)
     y = np.array(y)
-    print(f'{len(X)} images loaded from {dir_path} directory.')
+    # print(f '{len(X)} images loaded from {dir_path} directory.')
     return X, y, labels
 
 TRAIN_DIR = 'TRAIN/'
@@ -224,7 +224,7 @@ i = 0
 for batch in demo_datagen.flow(x, batch_size=1, save_to_dir='preview', save_prefix='aug_img', save_format='jpg'):
     i += 1
     if i > 20:
-        break 
+        break
 
 TRAIN_DIR = 'TRAIN_CROP/'
 VAL_DIR = 'VAL_CROP/'
