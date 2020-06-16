@@ -16,28 +16,28 @@ from tensorflow_model_optimization.sparsity import keras as sparsity
 # Load the serialized model
 loaded_model = tf.keras.models.load_model('VGGModel.h5')
 
-new_pruning_params = {
-      'pruning_schedule': sparsity.PolynomialDecay(initial_sparsity=0.50,
-                                                   final_sparsity=0.90,
-                                                   begin_step=0,
-                                                   end_step=end_step,
-                                                   frequency=100)
-}
+#new_pruning_params = {
+#      'pruning_schedule': sparsity.PolynomialDecay(initial_sparsity=0.50,
+#                                                   final_sparsity=0.90,
+#                                                   begin_step=0,
+#                                                   end_step=end_step,
+#                                                   frequency=100)
+#}
 
-new_pruned_model = sparsity.prune_low_magnitude(loaded_model, **new_pruning_params)
-new_pruned_model.summary()
+#new_pruned_model = sparsity.prune_low_magnitude(loaded_model, **new_pruning_params)
+#new_pruned_model.summary()
 
-new_pruned_model.compile(
-    loss=tf.keras.losses.categorical_crossentropy,
-    optimizer='adam',
-    metrics=['accuracy'])
+#new_pruned_model.compile(
+#    loss=tf.keras.losses.categorical_crossentropy,
+#    optimizer='adam',
+#    metrics=['accuracy'])
 
 # Add a pruning step callback to peg the pruning step to the optimizer's
 # step. Also add a callback to add pruning summaries to tensorboard
-callbacks = [
-    sparsity.UpdatePruningStep(),
-    sparsity.PruningSummaries(log_dir=logdir, profile_batch=0)
-]
+#callbacks = [
+#    sparsity.UpdatePruningStep(),
+#    sparsity.PruningSummaries(log_dir=logdir, profile_batch=0)
+#]
 
 # new_pruned_model.fit(train_imgs_scaled, train_labels_enc,
 #           batch_size=batch_size,
@@ -50,6 +50,6 @@ callbacks = [
 # print('Test loss:', score[0])
 # print('Test accuracy:', score[1])
 
-final_model = sparsity.strip_pruning(new_pruned_model)
+final_model = sparsity.strip_pruning(loaded_model)
 final_model.summary()
 final_model.save('vggPruned.h5')
