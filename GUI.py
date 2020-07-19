@@ -43,7 +43,6 @@ def prediction():
     list_of_files = glob.glob('./brain-mri-images-for-brain-tumor-detection/brain_tumor_dataset/no/*')
     latest_file = max(list_of_files, key=os.path.getctime)
     img = cv2.imread(latest_file)
-    # img = cv2.imread("./MontgomerySet/CXR_png/MCUCXR_0001_0.png")
     img = autoroi(img)
     img = cv2.resize(img, (224, 224))
     img = np.reshape(img, [1, 224, 224, 3])
